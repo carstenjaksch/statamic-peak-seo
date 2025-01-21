@@ -196,6 +196,26 @@
 
     {{ if seo:use_fathom }}
         <script src="https://cdn.usefathom.com/script.js" site="{{ seo:fathom }}" defer></script>
+
+        {{ if seo:fathom_events }}
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (typeof fathom !== 'undefined') {
+                        {{ seo:fathom_events }}
+                    }
+                });
+
+                function trackEvent(name, selector, eventName = 'click', value = 0) {
+                    const element = document.querySelector(selector);
+
+                    element?.addEventListener(eventName, function(event) {
+                        fathom.trackEvent(name, {
+                            _value: value,
+                        });
+                    }, { once: true });
+                }
+            </script>
+        {{ /if }}
     {{ /if }}
 
     {{ if seo:use_matomo }}

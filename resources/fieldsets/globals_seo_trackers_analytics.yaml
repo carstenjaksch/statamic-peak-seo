@@ -23,6 +23,15 @@ fields:
       if:
         use_fathom: 'equals true'
   -
+    handle: fathom_events
+    field:
+      mode: javascript
+      type: code
+      display: Events
+      localizable: true
+      if:
+        use_fathom: 'equals true'
+  -
     handle: use_matomo
     field:
       type: toggle
