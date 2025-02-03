@@ -26,7 +26,7 @@
                     "consent_api": true,
                     "consent_api_handle": "analytics_storage",
                     "services": [
-                        "Google Analytics",
+                        "{{ seo:tracker_type == 'gtag' ? 'Google Analytics' : 'Google Tag Manager' }}",
                         {{ seo:analytics_services }}
                             "{{ value }}",
                         {{ /seo:analytics_services }}
